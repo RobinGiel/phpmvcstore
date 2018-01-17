@@ -21,7 +21,7 @@ class Pages extends Controller {
 
 
     public function about(){
-        
+
          $data =  [
             'title' => 'About us',
             'description' => 'App to sell and buy Products'

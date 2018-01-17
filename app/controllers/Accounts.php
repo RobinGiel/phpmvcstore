@@ -1,5 +1,5 @@
 <?php
-	class Accounts extends Controller{
+	class Accounts extends Controller {
 
         public function __construct(){
             if(!isLoggedIn()){
