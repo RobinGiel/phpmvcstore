@@ -32,4 +32,22 @@
 
             return $results;
         }
+
+        public function getOrderDetailsById($id){
+           
+            $this->db->query('SELECT
+                            order_details.product_id as productId,
+                            products.name as productName,
+                            order_details.product_price as productPrice,
+                            order_details.quantity as productQuantity
+                            FROM order_details
+                            INNER JOIN products
+                            ON  order_details.product_id = products.id
+                            WHERE completed_orders_id = :id');
+            $this->db->bind(':id', $id);
+
+            $results = $this->db->resultSet();
+
+            return $results;
+        }
     }

@@ -8,6 +8,7 @@
 
             $this->userModel = $this->model('User');
             $this->orderModel = $this->model('Order');
+            $this->productModel = $this->model('Product');
         }
 
         public function index(){
@@ -19,5 +20,17 @@
 
             ];
             $this->view('orders/index', $data);
+        }
+       // Show Product Details
+        public function details($id){
+
+            $order = $this->orderModel->getOrderDetailsById($id);
+            $product = $this->productModel->getProductById($id);
+            $data = [
+                'orders' =>  $order,
+                'products' => $product
+
+            ];
+            $this->view('orders/details', $data);
         }
     }

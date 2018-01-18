@@ -23,7 +23,7 @@
       <td>&euro; <?php   
       $details = $this->orderModel->getTotalPrice($order->orderId); 
       foreach($details as $row){
-          $result = $row->totalPaid;
+          $result = number_format($row->totalPaid, 2, ',', '');
       }
       echo $result;
       ?></td>
