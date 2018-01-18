@@ -4,11 +4,13 @@
     <div class="col-md-6">
         <h1>Products</h1>
     </div>
+    <?php if(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'medewerker') : ?>
     <div class="col-md-6">
             <a href="<?php echo URLROOT; ?>/products/add" class="btn btn-primary pull-right">
                 <i class="fa fa-pencil"></i> Add Product
             </a>
     </div>
+<?php endif; ?>
  </div>
  <?php foreach($data['products'] as $product) : ?>
     <div class="card card-body mb-3">

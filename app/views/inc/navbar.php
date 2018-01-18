@@ -18,7 +18,7 @@
 
         <ul class="navbar-nav ml-auto">
          <?php 
-         if(isset($_SESSION['user_id'])) : ?>
+         if(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'medewerker' ) : ?>
           <li class="nav-item">
             <a class="nav-link" href="#">Welcome <?php $id = $_SESSION['user_id'];
             $user = $this->userModel->getUserById($id); echo $user->name; ?> <i class="fa fa-user-o" aria-hidden="true"></i></a>
@@ -32,7 +32,21 @@
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a>
           </li>
-         <?php  else : ?>
+         <?php  elseif(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'klant' ) : ?>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Welcome <?php $id = $_SESSION['user_id'];
+            $user = $this->userModel->getUserById($id); echo $user->name; ?> <i class="fa fa-user-o" aria-hidden="true"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/carts/index">Shopping Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/accounts">Account <i class="fa fa-cog" aria-hidden="true"></i></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+          </li>
+        <?php else: ?>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>/users/register">Register</a>
           </li>

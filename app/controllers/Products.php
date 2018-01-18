@@ -9,6 +9,9 @@
             $this->userModel = $this->model('User');
         }
         public function index(){
+            if(!isLoggedIn()){
+                redirect('users/login');
+            }
             // Get Products
             $products = $this->productModel->getProducts();
 
@@ -22,7 +25,6 @@
         public function show($id){
             $product = $this->productModel->getProductById($id);
             $user = $this->userModel->getUserById($product->user_id);
-
             $data = [
                 'product' => $product,
                 'user' => $user

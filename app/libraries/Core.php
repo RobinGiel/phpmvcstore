@@ -38,7 +38,7 @@ class Core{
                 unset($url[1]);
             }
         }
-
+        
         // Get params
         $this->params = $url ? array_values($url) : [];
 

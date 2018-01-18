@@ -12,12 +12,13 @@
         }
 
         public function index(){
-
+            if(!isLoggedIn()){
+                redirect('users/login');
+            }
             $orders = $this->orderModel->getOrders();
 
             $data = [
                 'orders' => $orders
-
             ];
             $this->view('orders/index', $data);
         }

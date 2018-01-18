@@ -27,15 +27,26 @@
     }
 
     function isLoggedIn(){
-        if(isset($_SESSION['user_id'])){
+        if(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'medewerker'){
+            return true;
+        } elseif(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'klant'){
+            return true;
+        }
+        else {
+           return false;
+        }
+    }
+
+        function isLoggedInAsAdmin(){
+        if( $_SESSION['user_role'] === 'admin'){
             return true;
         } else {
             return false;
         }
     }
 
-        function isLoggedInAsAdmin(){
-        if(isset($_SESSION['user_role']) == 'admin'){
+        function isLoggedInAsClient(){
+        if($_SESSION['user_role'] === 'klant'){
             return true;
         } else {
             return false;

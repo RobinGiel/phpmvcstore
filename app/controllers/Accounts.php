@@ -11,7 +11,6 @@
         }
 
         public function index(){
-
             if(!isLoggedIn()) {
             redirect('users/login');
         } elseif($_SERVER['REQUEST_METHOD'] == 'POST'){

@@ -16,4 +16,10 @@
     <input type="submit" value="Delete" class="btn btn-danger">
  </form>
 <?php endif; ?>
+
+<?php if(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'klant') : ?>
+ <form class="pull-left" action="<?php echo URLROOT ?>/cart/add/<?php echo $data['product']->id; ?>" method="post">
+    <input type="submit" value="Buy" class="btn btn-success">
+ </form>
+<?php endif; ?>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
