@@ -3,7 +3,7 @@
 <br>
 <h1><?php echo $data['product']->name;  ?></h1>
 <div class="bg-secondary text-white p-2 mb-3">
-    <img src="<?php echo URLROOT;?>/img/<?php echo $data['product']->img?>" style="width: 15%;"><br>Product added by: <?php echo $data['user']->name; ?> <br>Product category: <?php echo $data['product']->category; ?>
+    <img src="<?php echo URLROOT;?>/img/<?php echo $data['product']->img?>" style="width: 15%;"><br>Product added by: <?php echo $data['user']->name; ?> <br>Product category: <?php echo $data['category']->name; ?>
 </div>
 <p><?php echo $data['product']->description; ?></p>
 <p> &euro;<?php echo $data['product']->price; ?></p>
@@ -19,6 +19,7 @@
 
 <?php if(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'klant') : ?>
  <form class="pull-left" action="<?php echo URLROOT ?>/cart/add/<?php echo $data['product']->id; ?>" method="post">
+    <input type="number">
     <input type="submit" value="Buy" class="btn btn-success">
  </form>
 <?php endif; ?>

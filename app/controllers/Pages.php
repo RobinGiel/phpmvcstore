@@ -3,22 +3,25 @@
 class Pages extends Controller {
     public function __construct(){
         $this->userModel = $this->model('User');
+
     }
 
     public function index(){
-        if (isLoggedin()) {
+        if (isLoggedInAsEmployee()) {
+            redirect('products');
+        }elseif(isLoggedInAsClient()){
             redirect('products');
         }
         $data =  [
             'title' => 'Ultimate store',
-            'description' => 'Products from people to people'
+            'description' => 'Products from people to people, login to enter store',
+            'session' => $_SESSION['user_role']
 
         ];
 
         $this->view('pages/index', $data);
 
-    }
-
+}
 
     public function about(){
 

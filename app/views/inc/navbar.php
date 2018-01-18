@@ -20,14 +20,14 @@
          <?php 
          if(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'medewerker' ) : ?>
           <li class="nav-item">
-            <a class="nav-link" href="#">Welcome <?php $id = $_SESSION['user_id'];
-            $user = $this->userModel->getUserById($id); echo $user->name; ?> <i class="fa fa-user-o" aria-hidden="true"></i></a>
+            <a class="nav-link" href="#"><i class="fa fa-user-o" aria-hidden="true"></i> Welcome <?php $id = $_SESSION['user_id'];
+            $user = $this->userModel->getUserById($id); echo $user->name; ?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/orders">Orders <i class="fa fa-clipboard" aria-hidden="true"></i></a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/orders"><i class="fa fa-clipboard" aria-hidden="true"></i> Orders</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/accounts">Account <i class="fa fa-cog" aria-hidden="true"></i></a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/accounts"><i class="fa fa-cog" aria-hidden="true"></i> Account</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a>

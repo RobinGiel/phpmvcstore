@@ -2,8 +2,8 @@
     class Orders extends Controller {
 
         public function __construct(){
-            if(!isLoggedIn()){
-                redirect('users/login');
+            if(!isLoggedInAsEmployee()){
+                redirect('pages/index');
             }
 
             $this->userModel = $this->model('User');
@@ -12,9 +12,6 @@
         }
 
         public function index(){
-            if(!isLoggedIn()){
-                redirect('users/login');
-            }
             $orders = $this->orderModel->getOrders();
 
             $data = [

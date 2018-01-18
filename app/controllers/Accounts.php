@@ -2,7 +2,7 @@
 	class Accounts extends Controller {
 
         public function __construct(){
-            if(!isLoggedIn()){
+            if(!isLoggedInAsClient() && !isLoggedInAsEmployee() && !isLoggedInAsAdmin()){
                 redirect('users/login');
             }
 
@@ -11,9 +11,8 @@
         }
 
         public function index(){
-            if(!isLoggedIn()) {
-            redirect('users/login');
-        } elseif($_SERVER['REQUEST_METHOD'] == 'POST'){
+  
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
   // Update user credentials
 
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);

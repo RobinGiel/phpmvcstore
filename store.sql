@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 18 jan 2018 om 02:37
+-- Gegenereerd op: 18 jan 2018 om 16:17
 -- Serverversie: 10.1.28-MariaDB
 -- PHP-versie: 7.1.10
 
@@ -21,6 +21,29 @@ SET time_zone = "+00:00";
 --
 -- Database: `store`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `categories`
+--
+
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `categories`
+--
+
+INSERT INTO `categories` (`id`, `name`) VALUES
+(1, 'PC'),
+(2, 'PC items'),
+(3, 'Mobile'),
+(4, 'Hardware'),
+(5, 'Software'),
+(6, 'Gadgets');
 
 -- --------------------------------------------------------
 
@@ -101,7 +124,7 @@ CREATE TABLE `products` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `category` varchar(255) NOT NULL,
+  `category` int(11) NOT NULL,
   `price` double(10,2) NOT NULL,
   `img` varchar(255) NOT NULL,
   `user_id` int(11) NOT NULL
@@ -112,10 +135,14 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name`, `description`, `category`, `price`, `img`, `user_id`) VALUES
-(18, 'Mouse', 'This is a mouse description', 'Computer', 30.44, 'mouse.jpg', 10),
-(19, 'Framework', 'Selling php frameworks', 'frameworks', 250.99, '13047837_1750854825201374_7809510911662716015_o.png', 10),
-(20, 'What&#39;s up', 'Nothing much', 'Ow yeah', 300.88, '18198435_769578906532764_3208624856456069648_n.jpg', 10),
-(21, 'Computer', 'It&#39;s a PC', 'pc', 350.77, 'illustration.jpg', 10);
+(18, 'Mouse', 'This is a mouse description', 2, 30.44, 'mouse.jpg', 10),
+(19, 'Framework', 'Selling php frameworks', 5, 250.99, '13047837_1750854825201374_7809510911662716015_o.png', 10),
+(20, 'What&#39;s up', 'Nothing much', 6, 200.00, '18198435_769578906532764_3208624856456069648_n.jpg', 10),
+(21, 'Computer', 'It&#39;s a PC', 1, 350.77, 'illustration.jpg', 10),
+(23, 'Galaxy s8', 'Galaxy s8', 4, 888.77, 'download.jpg', 12),
+(24, 'Iphone X', 'This is the iphone X aka 10 not 9', 3, 1049.99, 'shopping.jpg', 12),
+(30, 'Computer screen', 'A computer screen', 5, 270.00, 'hardware.jpg', 10),
+(31, 'Pc Item', 'This a another test Item', 6, 44.99, 'DisplayHGS.png', 10);
 
 -- --------------------------------------------------------
 
@@ -140,11 +167,18 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`, `role`) VA
 (8, 'Robin', 'robingiel@gmail.com', '$2y$10$vWv/1I8oarGa9NJ/cUvW8etli2DIRQ35wr3Ttl6kcidaYJb8S.Cse', '2018-01-11 17:32:06', 'klant'),
 (9, 'John', 'johndoe@gmail.com', '$2y$10$xHsRf6W2VMPSYLAlne9wG.gMKGJyg2Xo7JS8CPBvCtYoOpTsoNhdG', '2018-01-11 20:49:14', 'klant'),
 (10, 'Bill', 'bill@gmail.com', '$2y$10$vnRziR9kOk394hg4IXKfGuBDWByTnIBxmC0NOSrV8sC4jflYjK4Gm', '2018-01-11 21:57:36', 'medewerker'),
-(12, 'frank', 'frank@yahoo.com', '$2y$10$QCfHD0b6ApQzg0QzYGN4gemver/s18Sgp4mE3q4S7cIp8eXVjUco6', '2018-01-12 20:46:07', 'medewerker');
+(12, 'frank', 'frank@yahoo.com', '$2y$10$QCfHD0b6ApQzg0QzYGN4gemver/s18Sgp4mE3q4S7cIp8eXVjUco6', '2018-01-12 20:46:07', 'medewerker'),
+(13, 'Best Buyer', 'klant@gmail.com', '$2y$10$fIFtseyksqh9PmdQZOnxWeVf4mz1BPrMDdsanWZwIkrPB9cG9ergS', '2018-01-18 03:06:03', 'klant');
 
 --
 -- Indexen voor geëxporteerde tabellen
 --
+
+--
+-- Indexen voor tabel `categories`
+--
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexen voor tabel `completed_orders`
@@ -171,7 +205,9 @@ ALTER TABLE `posts`
 -- Indexen voor tabel `products`
 --
 ALTER TABLE `products`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category` (`category`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexen voor tabel `users`
@@ -182,6 +218,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT voor geëxporteerde tabellen
 --
+
+--
+-- AUTO_INCREMENT voor een tabel `categories`
+--
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT voor een tabel `completed_orders`
@@ -205,13 +247,13 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT voor een tabel `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Beperkingen voor geëxporteerde tabellen

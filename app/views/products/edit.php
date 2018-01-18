@@ -24,8 +24,12 @@
         </div>
         <div class="form-group">
             <label for="category">Category: <sup>*</sup></label>
-            <input type="text" name="category" class="form-control form-control-lg
-            <?php echo(!empty($data['category_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['category']; ?>">
+      <select name="category" class="custom-select mr-sm-2 form-control form-control-lg <?php echo(!empty($data['category_err'])) ? 'is-invalid' : ''; ?>" id="inlineFormCustomSelect">
+        <option selected>Choose...</option>
+    <?php foreach($data['category'] as $category) : ?>
+        <option value="<?php echo $category->categoryId; ?>"><?php echo $category->categoryName; ?></option>
+<?php endforeach; ?>
+      </select>
             <span class="invalid-feedback"><?php echo $data['category_err']; ?></span>
         </div>
         <input type="submit" class="btn btn-success" value="Submit">

@@ -8,15 +8,17 @@
 
         public function getProducts(){
             $this->db->query('SELECT *,
-                              products.id as productId,
-                              products.name as productName,
-                              users.id as userId,
-                              products.img as productImg,
-                              products.category as productCategory
-                              FROM products
-                              INNER JOIN users
-                              ON products.user_id = users.id
-                              ORDER BY products.id DESC
+                                products.id as productId,
+                                products.name as productName,
+                                products.img as productImg,
+                                users.name as userName,
+                                categories.id as categoryId
+                                FROM products
+                                INNER JOIN users
+                                ON products.user_id = users.id
+                                INNER JOIN categories ON
+                                products.category = categories.id
+                                ORDER BY products.id DESC
                               ');
 
             $results = $this->db->resultSet();

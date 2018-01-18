@@ -1,17 +1,15 @@
 <?php
     class Products extends Controller {
         public function __construct(){
-            if(!isLoggedIn()){
+            if(!isLoggedInAsEmployee() && !isLoggedInAsClient()){
                 redirect('users/login');
             }
 
             $this->productModel = $this->model('Product');
             $this->userModel = $this->model('User');
+            $this->categoryModel = $this->model('Category');
         }
         public function index(){
-            if(!isLoggedIn()){
-                redirect('users/login');
-            }
             // Get Products
             $products = $this->productModel->getProducts();
 
@@ -25,9 +23,11 @@
         public function show($id){
             $product = $this->productModel->getProductById($id);
             $user = $this->userModel->getUserById($product->user_id);
+            $category = $this->categoryModel->getCategoryById($product->category);
             $data = [
                 'product' => $product,
-                'user' => $user
+                'user' => $user,
+                'category' => $category
             ];
 
             $this->view('products/show', $data);
@@ -105,10 +105,11 @@
             }
 
             } else {
+                $category = $this->categoryModel->getCategory();
             $data = [
                 'name' => '',
                 'description' => '',
-                'category' => '',
+                'category' => $category,
                 'price' => '',
                 'img' => ''
 
@@ -188,11 +189,12 @@
                 if($product->user_id != $_SESSION['user_id']){
                     redirect('products');
                 }
+                $category = $this->categoryModel->getCategory();
             $data = [
                 'id' => $id,
                 'name' => $product->name,
                 'description' => $product->description,
-                'category' => $product->category,
+                'category' => $category,
                 'price' => $product->price
             ];
             }
