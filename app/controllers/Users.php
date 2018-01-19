@@ -6,7 +6,7 @@
         }
 
         public function index(){
-        if(!isLoggedIn()) {
+        if(!isLoggedIn(!isLoggedInAsClient() && !isLoggedInAsEmployee() && !isLoggedInAsAdmin())) {
             redirect('users/login');
         } else {
 

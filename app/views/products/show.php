@@ -3,7 +3,7 @@
 <br>
 <h1><?php echo $data['product']->name;  ?></h1>
 <div class="bg-secondary text-white p-2 mb-3">
-    <img src="<?php echo URLROOT;?>/img/<?php echo $data['product']->img?>" style="width: 15%;"><br>Product added by: <?php echo $data['user']->name; ?> <br>Product category: <?php echo $data['category']->name; ?>
+    <img src="<?php echo URLROOT;?>/img/<?php echo $data['product']->img?>" style="width: 40%;"><br>Product added by: <?php echo $data['user']->name; ?> <br>Product category: <?php echo $data['category']->name; ?>
 </div>
 <p><?php echo $data['product']->description; ?></p>
 <p> &euro;<?php echo $data['product']->price; ?></p>
@@ -18,9 +18,10 @@
 <?php endif; ?>
 
 <?php if(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'klant') : ?>
- <form class="pull-left" action="<?php echo URLROOT ?>/cart/add/<?php echo $data['product']->id; ?>" method="post">
-    <input type="number">
-    <input type="submit" value="Buy" class="btn btn-success">
+ <form class="pull-left" action="<?php echo URLROOT ?>/shoppingcarts/index/<?php echo $data['product']->id; ?>" method="post">
+    <label for="quantity">Quantity: </label>
+    <input style="width:50px;" type="number" maxlenght="3" size="3" min="1" step="1"/ value="1"></br>
+    <input type="submit" value="Add to Cart" class="btn btn-success">
  </form>
 <?php endif; ?>
 <?php require APPROOT . '/views/inc/footer.php'; ?>

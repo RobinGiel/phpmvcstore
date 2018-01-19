@@ -34,17 +34,17 @@
           </li>
          <?php  elseif(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'klant' ) : ?>
           <li class="nav-item">
-            <a class="nav-link" href="#">Welcome <?php $id = $_SESSION['user_id'];
-            $user = $this->userModel->getUserById($id); echo $user->name; ?> <i class="fa fa-user-o" aria-hidden="true"></i></a>
+            <a class="nav-link" href="#"><i class="fa fa-user-o" aria-hidden="true"></i> Welcome <?php $id = $_SESSION['user_id'];
+            $user = $this->userModel->getUserById($id); echo $user->name; ?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/carts/index">Shopping Cart <i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/shoppingcarts/index"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/accounts">Account <i class="fa fa-cog" aria-hidden="true"></i></a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/accounts"><i class="fa fa-cog" aria-hidden="true"></i> Account</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
           </li>
         <?php else: ?>
           <li class="nav-item">
