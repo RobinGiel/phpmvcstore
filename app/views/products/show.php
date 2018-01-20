@@ -18,9 +18,9 @@
 <?php endif; ?>
 
 <?php if(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'klant') : ?>
- <form class="pull-left" action="<?php echo URLROOT ?>/shoppingcarts/index/<?php echo $data['product']->id; ?>" method="post">
+ <form class="pull-left" action="<?php echo URLROOT ?>/products/show/<?php echo $data['product']->id; ?>" method="post">
     <label for="quantity">Quantity: </label>
-    <input style="width:50px;" type="number" maxlenght="3" size="3" min="1" step="1"/ value="1"></br>
+    <input  name="quantity" style="width:50px;" type="number" maxlenght="3" size="3" min="1" step="1"/ value="1"></br>
     <input type="submit" value="Add to Cart" class="btn btn-success">
  </form>
 <?php endif; ?>

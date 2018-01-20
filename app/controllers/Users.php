@@ -146,7 +146,7 @@
                     // Validated
                     // Check and set logged in user
                     $loggedInUser = $this->userModel->login($data['email'], $data['password']);
-
+                    
                     if($loggedInUser){
                         // Create Session
                         $this->createUserSession($loggedInUser);

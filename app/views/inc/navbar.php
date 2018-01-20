@@ -20,7 +20,7 @@
          <?php 
          if(isset($_SESSION['user_id']) && $_SESSION['user_role'] === 'medewerker' ) : ?>
           <li class="nav-item">
-            <a class="nav-link" href="#"><i class="fa fa-user-o" aria-hidden="true"></i> Welcome <?php $id = $_SESSION['user_id'];
+            <a class="nav-link" href="#"><i class="fa fa-user-o" aria-hidden="true"></i> Welcome <?php  $id = $_SESSION['user_id'];
             $user = $this->userModel->getUserById($id); echo $user->name; ?></a>
           </li>
           <li class="nav-item">
@@ -38,7 +38,10 @@
             $user = $this->userModel->getUserById($id); echo $user->name; ?></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/shoppingcarts/index"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart</a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/shoppingcarts"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo URLROOT; ?>/orders"><i class="fa fa-clipboard" aria-hidden="true"></i> Orders</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<?php echo URLROOT; ?>/accounts"><i class="fa fa-cog" aria-hidden="true"></i> Account</a>

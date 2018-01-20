@@ -14,8 +14,7 @@ class Pages extends Controller {
         }
         $data =  [
             'title' => 'Ultimate store',
-            'description' => 'Products from people to people, login to enter store',
-            'session' => $_SESSION['user_role']
+            'description' => 'Products from people to people, login to enter store'
 
         ];
 
