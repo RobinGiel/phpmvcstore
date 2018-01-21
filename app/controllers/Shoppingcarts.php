@@ -3,7 +3,7 @@
 
         public function __construct(){
             if(!isLoggedInAsClient()){
-                redirect('pages/index');
+                redirect('users/login');
             }
             $this->productModel = $this->model('Product');
             $this->userModel = $this->model('User');
@@ -21,5 +21,15 @@
             } else {
                  $this->view('shoppingcarts/index'); 
             }
+    }
+
+        public function remove(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            
+            $id = $_POST['id'];
+            unset($_SESSION['cart'][$id]);
+            flash('post_message', '1 order removed');
+            redirect('shoppingcarts');
+        }
     }
 }
