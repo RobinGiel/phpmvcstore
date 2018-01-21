@@ -1,40 +1,24 @@
 <?php
 class ShoppingCart{
-        private $db;
-
-        public function __construct(){
-            $this->db = new Database;
-        }
-
-        public function getCategory(){
-            $this->db->query('SELECT
-                              categories.id as categoryId,
-                              categories.name as categoryName
-                              FROM categories
-                              ORDER BY categories.id ASC
-                              ');
-
-            $results = $this->db->resultSet();
-
-            return $results;
-        }
-
-        public function getCategoryById($id){
-            $this->db->query('SELECT * FROM categories WHERE id = :id');
-            $this->db->bind(':id', $id);
-
-            $row = $this->db->single();
-
-            return $row;
-        }
-
-        public function add(){
+        // public function add($id, $num = 1){
             
-            $data = [
-                'quantity' => 12,
-                'productId' => 15
-            ];
+        //     //setup or retrieve cart
+        //     $cart = array();
+        //     if(isset($_SESSION['cart'])){
+                
+        //         $cart = $_SESSION['cart'];
+        //     }
 
-            return $data;
-        }
+        //     //check to see if item is already in cart
+
+        //     if(isset($cart[$id])){
+
+        //         //if item is in cart
+        //         $cart[$id] = $cart[$id] + $num;
+        //     }else {
+        //         // if item is not in cart
+        //         $cart[$id] = $num;
+        //     }
+        //     $_SESSION['cart'] = $cart;
+        // }
     }

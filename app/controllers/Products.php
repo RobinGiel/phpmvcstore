@@ -219,37 +219,42 @@
             'category' => $category
         ];
         $this->view('products/show', $data);
-
-         if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
-            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-
-            $data  = [
-                'order_quantity' => $_POST['quantity'],
-                'order_productId' => $product->id
-            ];
-
-            var_dump($data);
-
-
-           $cart = $this->createOrderSession((object)$data);
-
-            if($cart){
-                $this->createOrderSession($cart);
-            } else{
-                return false;
-            } 
-
-            $this->view('products/show', $data);
-        }
-    }
-
-        public function createOrderSession($orders){
-        $_SESSION['order_quantity'] = $orders->order_quantity;
-        $_SESSION['order_productId'] = $orders->order_productId;
-        flash('post_message', 'Product has been added to your Shopping Cart');
-        redirect('shoppingcarts');
-
     
+
+                // Add imtes to cart
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        
+
+
+        $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+        $id = $product->id;
+        $newitem  = [
+            'order_quantity' => $_POST['quantity'],
+            'order_productId' => $product->id
+        ];
+
+        
+            if(!empty($_SESSION['cart']))
+            {    
+                //and if session cart same 
+                if(isset($_SESSION['cart'][$id]) == $id) {
+                    $_SESSION['cart'][$id];
+                } else { 
+                    //if not same put new storing
+                    $_SESSION['cart'][$id] = $newitem;
+                    flash('post_message', 'Product has been added to your Shopping Cart');
+                    redirect('shoppingcarts');
+                }
+            } else  {
+                $_SESSION['cart'] = array();
+                $_SESSION['cart'][$id] = $newitem;
+                flash('post_message', 'Product has been added to your Shopping Cart');
+                redirect('shoppingcarts');
+            }
+        } 
+
     }
+
+
 }
