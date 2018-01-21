@@ -32,4 +32,20 @@
             redirect('shoppingcarts');
         }
     }
+            public function emptycart(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            
+            unset($_SESSION['cart']);
+            flash('post_message', 'Shopping Cart is now empty');
+            redirect('shoppingcarts');
+        }
+    }
+        public function ordernow(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            
+            unset($_SESSION['cart']);
+            flash('post_message', 'Thank you for ordering! see here all');
+            redirect('orders/details');
+        }
+    }
 }

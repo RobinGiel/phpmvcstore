@@ -55,5 +55,16 @@ echo  'Total: &euro; ' . number_format($total, 2, ',', '');
 ?>
 </p>
 </div>
+<div class="container" style="height: 100px;">
+        
+  <form  class="pull-left mt-4" action="<?php echo URLROOT ?>/shoppingcarts/emptycart/" method="post">
+    <input  name="id" type="hidden" value="<?php echo $row['order_productId']; ?>"></br>
+    <input style="color:white;" type="submit" value="Remove All" class="btn btn-dark">
+  </form>
+
+ <form class="pull-right mt-5" action="<?php echo URLROOT ?>/shoppingcarts/ordernow/>" method="post">
+    <input type="submit" value="Order Now" class="btn btn-success">
+ </form>
+ </div>
   <?php endif; ?>
 <?php require APPROOT . '/views/inc/footer.php'; ?>
