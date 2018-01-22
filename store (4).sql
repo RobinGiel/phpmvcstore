@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 22 jan 2018 om 02:24
+-- Gegenereerd op: 22 jan 2018 om 07:45
 -- Serverversie: 10.1.28-MariaDB
 -- PHP-versie: 7.1.10
 
@@ -106,7 +106,10 @@ INSERT INTO `completed_orders` (`id`, `user_id`, `ordered_at`) VALUES
 (42, 13, '2018-01-21 23:55:35'),
 (43, 13, '2018-01-21 23:56:25'),
 (44, 14, '2018-01-21 23:58:11'),
-(45, 14, '2018-01-22 00:02:07');
+(45, 14, '2018-01-22 00:02:07'),
+(46, 14, '2018-01-22 03:30:05'),
+(47, 14, '2018-01-22 03:30:51'),
+(48, 14, '2018-01-22 05:33:36');
 
 -- --------------------------------------------------------
 
@@ -142,7 +145,11 @@ INSERT INTO `order_details` (`id`, `product_id`, `product_price`, `quantity`, `c
 (13, 30, 270.00, 5, 45),
 (14, 18, 30.44, 1, 45),
 (15, 24, 1049.99, 1, 45),
-(16, 20, 200.00, 1, 45);
+(16, 20, 200.00, 1, 45),
+(17, 21, 350.77, 1, 46),
+(18, 21, 350.77, 1, 47),
+(19, 32, 100.88, 5, 47),
+(20, 32, 100.88, 1, 48);
 
 -- --------------------------------------------------------
 
@@ -286,13 +293,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT voor een tabel `completed_orders`
 --
 ALTER TABLE `completed_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT voor een tabel `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT voor een tabel `posts`
