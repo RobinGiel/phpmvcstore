@@ -27,7 +27,9 @@
       }
       echo $result;
       ?></td>
-      <td><a class="btn btn-dark pull-right" href="<?php echo URLROOT; ?>/orders/details/<?php echo $order->orderId ?>">View details<a/></td>
+      <td>
+      <a class="btn btn-dark pull-right" href="<?php echo URLROOT; ?>/orders/pdf/<?php echo $order->orderId ?>">View PDF<a/>
+      <a class="btn btn-success " href="<?php echo URLROOT; ?>/orders/details/<?php echo $order->orderId ?>">View details<a/></td>
     </tr>
 <?php endforeach; ?>
   </tbody>

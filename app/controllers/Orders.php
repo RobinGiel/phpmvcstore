@@ -34,15 +34,32 @@
         }
         }
 
-        public function pdf(){
-            // require_once('../../tcpdf/tcpdf.php');
+        public function pdf($id){
             if(isLoggedInAsClient()){
-            $data = [
-                'orders' => 'hello' 
-            ];
-            $this->view('orders/pdf');
+                    
+                    $id = $_SESSION['user_id'];
+ 
+                    $order = $this->orderModel->getOrderDetailsByUserId($id);
+                    $product = $this->productModel->getProductById($id);
+                    $data = [
+                        'orders' =>  $order,
+                        'products' => $product     
+                    ];
+                    $this->view('orders/pdf', $data);                        
+                } elseif(isLoggedInAsEmployee() && !isLoggedInAsAdmin()){
+
+                $order = $this->orderModel->getOrderDetailsById($id);
+                $product = $this->productModel->getProductById($id);
+                $data = [
+                    'orders' =>  $order,
+                    'products' => $product
+    
+                ];
+                $this->view('orders/pdf', $data);
+            }
         }
-        }
+
+
        // Show Product Details
         public function details($id){
             if(isLoggedInAsClient()){

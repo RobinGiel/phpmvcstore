@@ -1,32 +1,4 @@
 <?php
-//============================================================+
-// File name   : example_048.php
-// Begin       : 2009-03-20
-// Last Update : 2013-05-14
-//
-// Description : Example 048 for TCPDF class
-//               HTML tables and table headers
-//
-// Author: Nicola Asuni
-//
-// (c) Copyright:
-//               Nicola Asuni
-//               Tecnick.com LTD
-//               www.tecnick.com
-//               info@tecnick.com
-//============================================================+
-
-/**
- * Creates an example PDF TEST document using TCPDF
- * @package com.tecnick.tcpdf
- * @abstract TCPDF - Example: HTML tables and table headers
- * @author Nicola Asuni
- * @since 2009-03-20
- */
-
-// Include the main TCPDF library (search for installation path).
-// require_once('/tcpdf/config/tcpdf_include.php');
-
 // create new PDF document
 $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
@@ -72,39 +44,37 @@ $pdf->SetFont('helvetica', 'B', 20);
 // add a page
 $pdf->AddPage();
 
-$pdf->Write(0, 'Example of HTML tables', '', 0, 'L', true, 0, false, false, 0);
+$pdf->Write(0, 'Factuur', '', 0, 'L', true, 0, false, false, 0);
 
 $pdf->SetFont('helvetica', '', 8);
 
 // -----------------------------------------------------------------------------
 
-$tbl = <<<EOD
-<table cellspacing="0" cellpadding="1" border="1">
+
+$html = '<table>
+  <thead>
     <tr>
-        <td rowspan="3">COL 1 - ROW 1<br />COLSPAN 3</td>
-        <td>HERRE I AM</td>
-        <td>COL 3 - ROW 1</td>
+      <th>Item Name</th>
+      <th>Item Price</th>
+      <th>Item Quantity</th>
+      <th>Total</th>
     </tr>
-    <tr>
-    	<td rowspan="2">COL 2 - ROW 2 - COLSPAN 2<br />text line<br />text line<br />text line<br />text line</td>
-    	<td>COL 3 - ROW 2</td>
-    </tr>
-    <tr>
-       <td>COL 3 - ROW 3</td>
-    </tr>
+  </thead>
+  <tbody>';
 
-</table>
-EOD;
+foreach($data['orders'] as $order) {
+    $html .= '<tr>
+                <td>' . $order->productName . '</td>
+                <td>' . $order->productPrice . '</td>
+                <td>' . $order->productQuantity . '</td>
+                <td>' . '&euro;' . $TotalproductPrice = $order->productPrice * $order->productQuantity . '</td>
+            </tr>';}
 
-$pdf->writeHTML($tbl, true, false, false, false, '');
+$html .= '</tbody></table>';
+
+$pdf->writeHTML($html, true, false, false, false, '');
 
 
-
-// -----------------------------------------------------------------------------
 
 //Close and output PDF document
-$pdf->Output('robins.pdf', 'I');
-
-//============================================================+
-// END OF FILE
-//============================================================+
+$pdf->Output('store.pdf', 'I');
