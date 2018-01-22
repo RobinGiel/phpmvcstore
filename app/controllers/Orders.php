@@ -33,6 +33,16 @@
             $this->view('orders/index', $data);
         }
         }
+
+        public function pdf(){
+            // require_once('../../tcpdf/tcpdf.php');
+            if(isLoggedInAsClient()){
+            $data = [
+                'orders' => 'hello' 
+            ];
+            $this->view('orders/pdf');
+        }
+        }
        // Show Product Details
         public function details($id){
             if(isLoggedInAsClient()){
