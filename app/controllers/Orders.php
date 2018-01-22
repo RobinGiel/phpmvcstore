@@ -13,25 +13,25 @@
 
         public function index(){
             
-            if(isLoggedInAsClient()){
-            
-            $id = $_SESSION['user_id'];
-
-            $orders = $this->orderModel->getOrdersByUsersId($id);
-
-            $data = [
-                'orders' => $orders
-            ];
-            $this->view('orders/index', $data);
-            } else {
+                if(isLoggedInAsClient()){
                 
-            $orders = $this->orderModel->getOrders();
+                $id = $_SESSION['user_id'];
 
-            $data = [
-                'orders' => $orders
-            ];
-            $this->view('orders/index', $data);
-        }
+                $orders = $this->orderModel->getOrdersByUsersId($id);
+
+                $data = [
+                    'orders' => $orders
+                ];
+                $this->view('orders/index', $data);
+                } else {
+                    
+                $orders = $this->orderModel->getOrders();
+
+                $data = [
+                    'orders' => $orders
+                ];
+                $this->view('orders/index', $data);
+            }
         }
 
         public function pdf($id){
@@ -64,14 +64,12 @@
         public function details($id){
             if(isLoggedInAsClient()){
                     
-                    $id = $_SESSION['user_id'];
- 
-                    $order = $this->orderModel->getOrderDetailsByUserId($id);
-                    $product = $this->productModel->getProductById($id);
+                    $product = $this->productModel->getProductById($_SESSION['user_id']);
+                    $order = $this->orderModel->getOrderDetailsById($id);
                     $data = [
-                        'orders' =>  $order,
-                        'products' => $product     
+                        'orders' =>  $order  
                     ];
+
                     $this->view('orders/details', $data);                        
                 } elseif(isLoggedInAsEmployee() && !isLoggedInAsAdmin()){
 
