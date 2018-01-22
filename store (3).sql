@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 18 jan 2018 om 16:17
+-- Gegenereerd op: 22 jan 2018 om 02:24
 -- Serverversie: 10.1.28-MariaDB
 -- PHP-versie: 7.1.10
 
@@ -63,7 +63,50 @@ CREATE TABLE `completed_orders` (
 
 INSERT INTO `completed_orders` (`id`, `user_id`, `ordered_at`) VALUES
 (1, 8, '2018-01-17 15:18:11'),
-(2, 12, '2018-01-17 22:33:58');
+(2, 12, '2018-01-17 22:33:58'),
+(3, 12, '2018-01-21 20:38:58'),
+(4, 12, '2018-01-21 20:38:58'),
+(5, 12, '2018-01-21 21:59:24'),
+(6, 12, '2018-01-21 22:31:28'),
+(7, 12, '2018-01-21 22:35:04'),
+(8, 12, '2018-01-21 22:37:03'),
+(9, 12, '2018-01-21 22:40:52'),
+(10, 12, '2018-01-21 22:44:35'),
+(11, 12, '2018-01-21 22:48:35'),
+(12, 12, '2018-01-21 22:54:07'),
+(13, 12, '2018-01-21 22:58:08'),
+(14, 12, '2018-01-21 23:00:13'),
+(15, 12, '2018-01-21 23:01:17'),
+(16, 12, '2018-01-21 23:01:26'),
+(17, 12, '2018-01-21 23:01:52'),
+(18, 12, '2018-01-21 23:02:12'),
+(19, 12, '2018-01-21 23:05:26'),
+(20, 12, '2018-01-21 23:07:16'),
+(21, 12, '2018-01-21 23:08:15'),
+(22, 12, '2018-01-21 23:09:29'),
+(23, 12, '2018-01-21 23:09:37'),
+(24, 12, '2018-01-21 23:17:40'),
+(25, 12, '2018-01-21 23:18:12'),
+(26, 12, '2018-01-21 23:19:10'),
+(27, 12, '2018-01-21 23:19:39'),
+(28, 12, '2018-01-21 23:20:50'),
+(29, 12, '2018-01-21 23:21:14'),
+(30, 12, '2018-01-21 23:24:16'),
+(31, 12, '2018-01-21 23:24:48'),
+(32, 12, '2018-01-21 23:24:59'),
+(33, 12, '2018-01-21 23:29:29'),
+(34, 12, '2018-01-21 23:32:06'),
+(35, 12, '2018-01-21 23:32:17'),
+(36, 12, '2018-01-21 23:35:00'),
+(37, 12, '2018-01-21 23:36:11'),
+(38, 12, '2018-01-21 23:38:17'),
+(39, 12, '2018-01-21 23:45:14'),
+(40, 13, '2018-01-21 23:49:18'),
+(41, 13, '2018-01-21 23:53:09'),
+(42, 13, '2018-01-21 23:55:35'),
+(43, 13, '2018-01-21 23:56:25'),
+(44, 14, '2018-01-21 23:58:11'),
+(45, 14, '2018-01-22 00:02:07');
 
 -- --------------------------------------------------------
 
@@ -87,7 +130,19 @@ INSERT INTO `order_details` (`id`, `product_id`, `product_price`, `quantity`, `c
 (1, 18, 200.00, 4, 1),
 (2, 19, 44.69, 3, 1),
 (3, 20, 35.00, 6, 2),
-(4, 21, 400.00, 2, 2);
+(4, 21, 400.00, 2, 2),
+(5, 31, 155.00, 7, 3),
+(6, 18, 500.00, 5, 4),
+(7, 32, 100.88, 5, 42),
+(8, 31, 44.99, 1, 42),
+(9, 30, 270.00, 5, 43),
+(10, 31, 44.99, 4, 44),
+(11, 30, 270.00, 3, 44),
+(12, 24, 1049.99, 2, 44),
+(13, 30, 270.00, 5, 45),
+(14, 18, 30.44, 1, 45),
+(15, 24, 1049.99, 1, 45),
+(16, 20, 200.00, 1, 45);
 
 -- --------------------------------------------------------
 
@@ -142,7 +197,8 @@ INSERT INTO `products` (`id`, `name`, `description`, `category`, `price`, `img`,
 (23, 'Galaxy s8', 'Galaxy s8', 4, 888.77, 'download.jpg', 12),
 (24, 'Iphone X', 'This is the iphone X aka 10 not 9', 3, 1049.99, 'shopping.jpg', 12),
 (30, 'Computer screen', 'A computer screen', 5, 270.00, 'hardware.jpg', 10),
-(31, 'Pc Item', 'This a another test Item', 6, 44.99, 'DisplayHGS.png', 10);
+(31, 'Pc Item', 'This a another test Item', 6, 44.99, 'DisplayHGS.png', 10),
+(32, 'Test Item', 'THis is another one', 4, 100.88, 'favi3.png', 10);
 
 -- --------------------------------------------------------
 
@@ -167,8 +223,9 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `created_at`, `role`) VA
 (8, 'Robin', 'robingiel@gmail.com', '$2y$10$vWv/1I8oarGa9NJ/cUvW8etli2DIRQ35wr3Ttl6kcidaYJb8S.Cse', '2018-01-11 17:32:06', 'klant'),
 (9, 'John', 'johndoe@gmail.com', '$2y$10$xHsRf6W2VMPSYLAlne9wG.gMKGJyg2Xo7JS8CPBvCtYoOpTsoNhdG', '2018-01-11 20:49:14', 'klant'),
 (10, 'Bill', 'bill@gmail.com', '$2y$10$vnRziR9kOk394hg4IXKfGuBDWByTnIBxmC0NOSrV8sC4jflYjK4Gm', '2018-01-11 21:57:36', 'medewerker'),
-(12, 'frank', 'frank@yahoo.com', '$2y$10$QCfHD0b6ApQzg0QzYGN4gemver/s18Sgp4mE3q4S7cIp8eXVjUco6', '2018-01-12 20:46:07', 'medewerker'),
-(13, 'Best Buyer', 'klant@gmail.com', '$2y$10$fIFtseyksqh9PmdQZOnxWeVf4mz1BPrMDdsanWZwIkrPB9cG9ergS', '2018-01-18 03:06:03', 'klant');
+(12, 'frank', 'frank@yahoo.com', '$2y$10$QCfHD0b6ApQzg0QzYGN4gemver/s18Sgp4mE3q4S7cIp8eXVjUco6', '2018-01-12 20:46:07', 'klant'),
+(13, 'Best Buyer', 'klant@gmail.com', '$2y$10$fIFtseyksqh9PmdQZOnxWeVf4mz1BPrMDdsanWZwIkrPB9cG9ergS', '2018-01-18 03:06:03', 'klant'),
+(14, 'NewBuyer', 'buyer@gmail.com', '$2y$10$T/smWrbKucZJdKRc88FSE.xNUF3TVU4BZZv23imqz4r3xRfupBK5u', '2018-01-22 00:57:07', 'klant');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -229,13 +286,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT voor een tabel `completed_orders`
 --
 ALTER TABLE `completed_orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT voor een tabel `order_details`
 --
 ALTER TABLE `order_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT voor een tabel `posts`
@@ -247,13 +304,13 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT voor een tabel `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Beperkingen voor geëxporteerde tabellen
