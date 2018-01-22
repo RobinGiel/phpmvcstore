@@ -62,7 +62,7 @@ echo  'Total: &euro; ' . number_format($total, 2, ',', '');
     <input style="color:white;" type="submit" value="Remove All" class="btn btn-dark">
   </form>
 
- <form class="pull-right mt-5" action="<?php echo URLROOT ?>/shoppingcarts/ordernow/>" method="post">
+ <form class="pull-right mt-5" action="<?php echo URLROOT ?>/shoppingcarts/ordernow" method="post">
     <input type="submit" value="Order Now" class="btn btn-success">
  </form>
  </div>

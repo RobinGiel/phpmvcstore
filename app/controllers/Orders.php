@@ -58,4 +58,36 @@
                 $this->view('orders/details', $data);
             } 
         }
+
+                public function success(){
+                    if(isLoggedInAsClient()){
+                        foreach($_SESSION['cart'] as $row){
+                            $id = $_SESSION['user_id'];
+                            $maxUserOrderId = $this->orderModel->getMaxUserId($id);
+    
+                $products = $this->productModel->getProductById($row['order_productId']);
+                            $data =[
+                                'product_id' => $products->id,
+                                'product_price' => $products->price,
+                                'quantity' => $row['order_quantity'],
+                                'completed_orders_id' => $maxUserOrderId->MaxID
+                            ];
+
+                            // var_dump($data);
+
+
+                            if($this->orderModel->newOrderDetails($data)){
+                                
+                                unset($_SESSION['cart']);
+                                redirect('orders');
+                                flash('post_message', 'Thank you for your order!');
+                                
+                            }
+                            else{
+                                die('something went wrong');
+                            }
+                        }
+                
+            } 
+        }
     }

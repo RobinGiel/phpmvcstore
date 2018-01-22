@@ -7,6 +7,7 @@
             }
             $this->productModel = $this->model('Product');
             $this->userModel = $this->model('User');
+            $this->orderModel = $this->model('Order');
             
             $this->shoppingCartModel = $this->model('ShoppingCart');
         }
@@ -43,9 +44,15 @@
         public function ordernow(){
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             
-            unset($_SESSION['cart']);
-            flash('post_message', 'Thank you for ordering! see here all');
-            redirect('orders/details');
+            $id = $_SESSION['user_id'];
+
+            if($this->orderModel->newOrder($id)){
+
+                redirect('orders/success');
+                        
+                    } else{
+                        die('something went wrong');
+                    }
         }
     }
 }
